@@ -1,33 +1,19 @@
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Signup() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const handleSignup = async () => {
-    try {
-      await axios.post("https://your-backend.onrender.com/signup", {
-        username,
-        password,
-      });
-      alert("Signup successful! Please log in.");
-      navigate("/");
-    } catch (error) {
-      alert("Signup failed: " + error.response.data.detail);
-    }
-  };
-
+function SignUp() {
   return (
     <div>
-      <h2>Sign Up</h2>
-      <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignup}>Sign Up</button>
+      <h1>Sign Up</h1>
+      <form>
+        <input type="text" placeholder="Name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <Link to="/">Sign In</Link></p>
     </div>
   );
 }
 
-export default Signup;
+export default SignUp;
