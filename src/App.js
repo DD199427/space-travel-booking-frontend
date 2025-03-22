@@ -1,14 +1,15 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Signin from "./components/Signin";
-import Signup from "./components/Signup";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 import Booking from "./components/Booking";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/booking" element={<Booking />} />
       </Routes>
     </Router>
