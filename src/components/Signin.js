@@ -1,33 +1,18 @@
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Signin() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const handleSignin = async () => {
-    try {
-      await axios.post("https://your-backend.onrender.com/signin", {
-        username,
-        password,
-      });
-      alert("Login successful!");
-      navigate("/booking");
-    } catch (error) {
-      alert("Login failed: " + error.response.data.detail);
-    }
-  };
-
+function SignIn() {
   return (
     <div>
-      <h2>Sign In</h2>
-      <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignin}>Sign In</button>
+      <h1>Sign In</h1>
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
     </div>
   );
 }
 
-export default Signin;
+export default SignIn;
